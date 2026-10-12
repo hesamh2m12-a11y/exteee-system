@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXTEEE SYSTEM</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#0d0d0f"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="EXTEEE">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root { --font-fa:'Vazirmatn','Tahoma',sans-serif; --font-en:'Inter','Segoe UI',sans-serif; --radius:14px; --radius-sm:8px; --shadow:0 8px 24px rgba(0,0,0,0.18); --transition:all 0.25s ease; }
+
+[data-theme="gold-black"] { --bg:#0d0d0f; --bg-2:#15151a; --card:#1a1a22; --card-2:#20202a; --border:#2a2a35; --text:#f0f0f5; --text-2:#a0a0b0; --accent:#d4af37; --accent-2:#f5d76e; --accent-text:#0d0d0f; --success:#4ade80; --warning:#fbbf24; --danger:#f87171; --chart:#d4af37; }
+[data-theme="light"] { --bg:#f7f7fa; --bg-2:#ffffff; --card:#ffffff; --card-2:#f0f0f5; --border:#e2e2ea; --text:#1a1a22; --text-2:#6a6a78; --accent:#6366f1; --accent-2:#818cf8; --accent-text:#ffffff; --success:#10b981; --warning:#f59e0b; --danger:#ef4444; --chart:#6366f1; }
+[data-theme="neon"] { --bg:#0a0a12; --bg-2:#10101a; --card:#16161f; --card-2:#1d1d2a; --border:#2a2a3a; --text:#e8e8f0; --text-2:#8888a0; --accent:#00ffd5; --accent-2:#5effe0; --accent-text:#0a0a12; --success:#4ade80; --warning:#fbbf24; --danger:#f87171; --chart:#00ffd5; }
+[data-theme="ocean"] { --bg:#0a1628; --bg-2:#0f1e35; --card:#13243f; --card-2:#1a2f4f; --border:#1f3a5f; --text:#e0ecf8; --text-2:#7a9bc0; --accent:#38bdf8; --accent-2:#7dd3fc; --accent-text:#0a1628; --success:#4ade80; --warning:#fbbf24; --danger:#f87171; --chart:#38bdf8; }
+[data-theme="forest"] { --bg:#0d1510; --bg-2:#121d16; --card:#17261c; --card-2:#1e3024; --border:#263d2e; --text:#e0f0e5; --text-2:#7aa088; --accent:#4ade80; --accent-2:#86efac; --accent-text:#0d1510; --success:#4ade80; --warning:#fbbf24; --danger:#f87171; --chart:#4ade80; }
+[data-theme="purple"] { --bg:#120a1f; --bg-2:#1a0f2e; --card:#22143a; --card-2:#2c1a4a; --border:#3a2460; --text:#ede0f8; --text-2:#a08ac0; --accent:#a855f7; --accent-2:#c084fc; --accent-text:#120a1f; --success:#4ade80; --warning:#fbbf24; --danger:#f87171; --chart:#a855f7; }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body { font-family:var(--font-fa); background:var(--bg); color:var(--text); transition:var(--transition); overflow-x:hidden; line-height:1.6; }
+body[dir="ltr"] { font-family:var(--font-en); }
+::-webkit-scrollbar { width:8px; height:8px; }
+::-webkit-scrollbar-track { background:var(--bg-2); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:var(--accent); }
+button, input, select, textarea { font-family:inherit; color:inherit; outline:none; }
+
+.app { max-width:1200px; margin:0 auto; padding:0 16px 100px; }
+
+.header { position:sticky; top:0; z-index:100; background:var(--bg); border-bottom:1px solid var(--border); padding:12px 0; margin-bottom:20px; backdrop-filter:blur(10px); }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.logo { display:flex; align-items:center; gap:10px; }
+
+/* لوگوی CSS موقت - بعداً با تصویر عوض می‌شه */
+.logo-badge-css {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 3px;
+  position: relative;
+  background: linear-gradient(180deg, #e8c766 0%, #d4af37 45%, #a8842a 100%);
+  text-shadow: 
+    0 1px 0 rgba(0,0,0,0.5),
+    0 2px 3px rgba(0,0,0,0.35),
+    0 -1px 0 rgba(255,255,255,0.15);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -2px 5px rgba(0,0,0,0.25),
+    0 4px 14px rgba(212,175,55,0.28);
+  overflow: hidden;
+}
+.logo-badge-css::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 25% 20%, rgba(255,255,255,0.3), transparent 55%),
+    repeating-linear-gradient(
+      90deg, 
+      transparent 0px, 
+      transparent 1px, 
+      rgba(139, 90, 0, 0.18) 1px, 
+      rgba(139, 90, 0, 0.18) 2px
+    );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.logo-badge-css span {
+  position: relative;
+  z-index: 1;
+}
+
+.header-controls { display:flex; gap:8px; align-items:center; }
+.icon-btn { width:38px; height:38px; border-radius:10px; background:var(--card); border:1px solid var(--border); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:var(--transition); }
+.icon-btn:hover { background:var(--card-2); border-color:var(--accent); }
+
+.tabs { display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; margin-bottom:20px; scrollbar-width:none; }
+.tabs::-webkit-scrollbar { display:none; }
+.tab { padding:9px 16px; border-radius:10px; background:var(--card); border:1px solid var(--border); color:var(--text-2); cursor:pointer; white-space:nowrap; font-size:14px; font-weight:500; transition:var(--transition); display:flex; align-items:center; gap:6px; }
+.tab:hover { color:var(--text); border-color:var(--accent); }
+.tab.active { background:var(--accent); color:var(--accent-text); border-color:var(--accent); font-weight:600; }
+
+.page { display:none; animation:fadeIn 0.3s ease; }
+.page.active { display:block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; transition:var(--transition); }
+.card:hover { border-color:var(--accent); }
+.card-title { font-size:14px; font-weight:600; color:var(--text-2); margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:20px; }
+.stat { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; transition:var(--transition); }
+.stat:hover { border-color:var(--accent); transform:translateY(-2px); }
+.stat-label { font-size:12px; color:var(--text-2); margin-bottom:6px; }
+.stat-value { font-size:22px; font-weight:700; color:var(--accent); }
+.stat-sub { font-size:11px; color:var(--text-2); margin-top:4px; }
+
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+@media (max-width:700px) { .grid-2 { grid-template-columns:1fr; } }
+
+.chart-wrap { position:relative; height:180px; margin-top:8px; }
+.chart-svg { width:100%; height:100%; overflow:visible; }
+.chart-grid { stroke:var(--border); stroke-width:1; stroke-dasharray:3 3; }
+.chart-line { fill:none; stroke:var(--chart); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+.chart-area { fill:var(--chart); opacity:0.12; }
+.chart-dot { fill:var(--chart); stroke:var(--card); stroke-width:2; }
+
+.progress-bar { height:8px; background:var(--card-2); border-radius:4px; overflow:hidden; margin-top:8px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:4px; transition:width 0.5s ease; }
+
+.list { display:flex; flex-direction:column; gap:8px; }
+.list-item { background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; display:flex; align-items:center; gap:10px; transition:var(--transition); }
+.list-item:hover { border-color:var(--accent); }
+.list-item.done { opacity:0.5; }
+.list-item.done .item-title { text-decoration:line-through; }
+.item-title { flex:1; font-size:14px; }
+.item-meta { font-size:11px; color:var(--text-2); }
+
+.checkbox { width:20px; height:20px; border-radius:6px; border:2px solid var(--border); cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:var(--transition); font-size:12px; color:transparent; }
+.checkbox:hover { border-color:var(--accent); }
+.checkbox.checked { background:var(--accent); border-color:var(--accent); color:var(--accent-text); }
+
+.btn { padding:9px 16px; border-radius:var(--radius-sm); background:var(--accent); color:var(--accent-text); border:none; cursor:pointer; font-weight:600; font-size:13px; transition:var(--transition); display:inline-flex; align-items:center; gap:6px; }
+.btn:hover { opacity:0.9; transform:translateY(-1px); }
+.btn-ghost { background:transparent; color:var(--text-2); border:1px solid var(--border); }
+.btn-ghost:hover { color:var(--accent); border-color:var(--accent); }
+.btn-sm { padding:6px 10px; font-size:12px; }
+.btn-danger { background:var(--danger); color:#fff; }
+
+.input, .select, .textarea { width:100%; padding:10px 12px; background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-sm); color:var(--text); font-size:14px; transition:var(--transition); }
+.input:focus, .select:focus, .textarea:focus { border-color:var(--accent); background:var(--card); }
+.textarea { resize:vertical; min-height:60px; }
+.form-row { display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+.form-row > * { flex:1; min-width:120px; }
+
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; z-index:1000; padding:16px; animation:fadeIn 0.2s ease; }
+.modal-overlay.active { display:flex; }
+.modal { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; width:100%; max-width:480px; max-height:90vh; overflow-y:auto; box-shadow:var(--shadow); animation:slideUp 0.3s ease; }
+@keyframes slideUp { from { transform:translateY(20px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+.modal-title { font-size:16px; font-weight:700; margin-bottom:16px; color:var(--accent); }
+.modal-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+
+.fab { position:fixed; bottom:24px; left:24px; z-index:500; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.fab-main { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:var(--accent-text); border:none; cursor:pointer; font-size:24px; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); transition:var(--transition); }
+.fab-main:hover { transform:scale(1.08) rotate(90deg); }
+.fab-menu { display:none; flex-direction:column; gap:8px; }
+.fab-menu.active { display:flex; animation:fadeIn 0.2s ease; }
+.fab-item { background:var(--card); border:1px solid var(--border); color:var(--text); padding:10px 16px; border-radius:var(--radius-sm); cursor:pointer; font-size:13px; font-weight:500; white-space:nowrap; box-shadow:var(--shadow); transition:var(--transition); display:flex; align-items:center; gap:8px; }
+.fab-item:hover { border-color:var(--accent); background:var(--card-2); }
+
+.badge { display:inline-block; padding:3px 8px; border-radius:6px; font-size:10px; font-weight:600; background:var(--card-2); color:var(--text-2); border:1px solid var(--border); }
+.badge-accent { background:var(--accent); color:var(--accent-text); border-color:var(--accent); }
+.badge-success { background:var(--success); color:#fff; border-color:var(--success); }
+.badge-warning { background:var(--warning); color:#000; border-color:var(--warning); }
+.badge-danger { background:var(--danger); color:#fff; border-color:var(--danger); }
+.badge-linked { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-text); border-color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
+
+.empty { text-align:center; padding:30px 16px; color:var(--text-2); font-size:13px; }
+
+.toast { position:fixed; bottom:24px; right:24px; background:var(--card); border:1px solid var(--accent); color:var(--text); padding:12px 18px; border-radius:var(--radius-sm); box-shadow:var(--shadow); z-index:2000; font-size:13px; opacity:0; transform:translateY(20px); transition:var(--transition); pointer-events:none; }
+.toast.show { opacity:1; transform:translateY(0); }
+
+.theme-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; }
+.theme-option { padding:12px; border-radius:var(--radius-sm); border:2px solid var(--border); cursor:pointer; text-align:center; font-size:12px; transition:var(--transition); }
+.theme-option:hover { border-color:var(--accent); }
+.theme-option.active { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent); }
+.theme-swatch { height:30px; border-radius:6px; margin-bottom:8px; }
+
+.habit-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px; }
+.habit-day { aspect-ratio:1; border-radius:6px; background:var(--card-2); border:1px solid var(--border); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--text-2); transition:var(--transition); }
+.habit-day:hover { border-color:var(--accent); }
+.habit-day.done { background:var(--accent); color:var(--accent-text); border-color:var(--accent); }
+
+/* ==================== CALENDAR ==================== */
+.cal-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.cal-nav { display:flex; align-items:center; gap:8px; }
+.cal-title { font-size:16px; font-weight:700; color:var(--accent); min-width:140px; text-align:center; }
+.cal-view-toggle { display:flex; background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:3px; gap:2px; }
+.cal-view-btn { padding:6px 14px; border-radius:6px; border:none; background:transparent; color:var(--text-2); cursor:pointer; font-size:12px; font-weight:500; transition:var(--transition); }
+.cal-view-btn.active { background:var(--accent); color:var(--accent-text); font-weight:600; }
+.cal-weekdays { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; margin-bottom:8px; }
+.cal-weekday { text-align:center; font-size:11px; font-weight:600; color:var(--text-2); padding:6px 0; text-transform:uppercase; letter-spacing:0.5px; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.cal-day { min-height:80px; background:var(--card-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:6px; cursor:pointer; transition:var(--transition); position:relative; display:flex; flex-direction:column; gap:3px; overflow:hidden; }
+.cal-day:hover { border-color:var(--accent); background:var(--card); transform:translateY(-2px); z-index:2; }
+.cal-day.other-month { opacity:0.3; }
+.cal-day.today { border:2px solid var(--accent); background:var(--card); }
+.cal-day.selected { border:2px solid var(--accent); box-shadow:0 0 0 3px rgba(212,175,55,0.15); background:var(--card); }
+.cal-day.has-overdue { border-right:3px solid var(--danger); }
+[dir="ltr"] .cal-day.has-overdue { border-right:none; border-left:3px solid var(--danger); }
+.cal-day-num { font-size:12px; font-weight:600; color:var(--text-2); display:flex; align-items:center; justify-content:space-between; }
+.cal-day.today .cal-day-num { color:var(--accent); }
+.cal-day-count { font-size:9px; background:var(--accent); color:var(--accent-text); border-radius:8px; padding:1px 5px; font-weight:700; }
+.cal-day-items { display:flex; flex-direction:column; gap:2px; overflow:hidden; }
+.cal-item { font-size:10px; padding:2px 5px; border-radius:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; background:var(--card); border-left:2px solid var(--accent); }
+[dir="rtl"] .cal-item { border-left:none; border-right:2px solid var(--accent); }
+.cal-item.task-high { border-color:var(--danger); }
+.cal-item.task-medium { border-color:var(--warning); }
+.cal-item.task-low { border-color:var(--success); }
+.cal-item.task-done { text-decoration:line-through; opacity:0.5; }
+.cal-item.idea { border-color:var(--accent-2); background:var(--card-2); font-style:italic; }
+.cal-item.finance-income { border-color:var(--success); color:var(--success); }
+.cal-item.finance-expense { border-color:var(--danger); color:var(--danger); }
+.cal-item.goal { border-color:var(--accent); background:var(--accent); color:var(--accent-text); font-weight:600; }
+.cal-more { font-size:9px; color:var(--text-2); text-align:center; font-weight:600; }
+.cal-grid.week-view .cal-day { min-height:140px; }
+.cal-grid.week-view .cal-item { font-size:11px; padding:3px 6px; }
+.cal-day-section { margin-bottom:14px; }
+.cal-day-section-title { font-size:12px; font-weight:700; color:var(--text-2); margin-bottom:6px; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:0.5px; }
+.cal-day-section-title::before { content:''; width:3px; height:12px; background:var(--accent); border-radius:2px; }
+
+/* ==================== PROJECTS & TASKS ==================== */
+.project-card {
+  position:relative;
+  background:linear-gradient(160deg, var(--card) 0%, var(--card-2) 100%);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin-bottom:12px;
+  transition:var(--transition);
+  overflow:hidden;
+}
+.project-card::before {
+  content:'';
+  position:absolute;
+  top:0; right:0; left:0;
+  height:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+}
+.project-card.expanded {
+  border-color:var(--accent);
+  box-shadow:0 8px 28px rgba(0,0,0,0.2);
+}
+.project-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px 18px;
+  cursor:pointer;
+  user-select:none;
+  transition:var(--transition);
+  flex-wrap:wrap;
+}
+.project-header:hover { background:rgba(255,255,255,0.02); }
+.project-info {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+  min-width:200px;
+}
+
+/* آیکون پروژه - قابل کلیک برای آپلود عکس */
+.project-icon {
+  position: relative;
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-2));
+  color:var(--accent-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:800;
+  flex-shrink:0;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: var(--transition);
+  overflow: visible;
+}
+.project-icon:hover { transform: scale(1.06); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+.project-icon.has-image {
+  background: transparent;
+  border: 2px solid var(--accent);
+  padding: 0;
+}
+.project-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+.project-icon-upload-hint {
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  border: 2px solid var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+.project-icon:hover .project-icon-upload-hint { opacity: 1; }
+.project-icon-remove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  border: 2px solid var(--bg);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  padding: 0;
+  z-index: 2;
+}
+[dir="rtl"] .project-icon-remove { right: auto; left: -6px; }
+.project-icon:hover .project-icon-remove { display: flex; }
+
+.project-titles { flex:1; min-width:0; }
+.project-name {
+  font-size:16px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:6px;
+  line-height:1.3;
+  word-break:break-word;
+}
+.project-meta-line {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  font-size:11px;
+  color:var(--text-2);
+}
+.project-actions {
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+.project-expand-icon {
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  background:var(--card-2);
+  border:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text-2);
+  font-size:16px;
+  font-weight:700;
+  transition:var(--transition);
+  flex-shrink:0;
+}
+.project-card.expanded .project-expand-icon {
+  background:var(--accent);
+  color:var(--accent-text);
+  border-color:var(--accent);
+}
+[dir="rtl"] .project-card.expanded .project-expand-icon { transform:rotate(-90deg); }
+[dir="ltr"] .project-card.expanded .project-expand-icon { transform:rotate(90deg); }
+
+.project-tasks-panel {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity:0;
+}
+.project-tasks-panel.open {
+  max-height:3000px;
+  opacity:1;
+}
+.project-inline-tasks {
+  padding:0 18px 18px;
+  border-top:1px dashed var(--border);
+  padding-top:16px;
+}
+.project-inline-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.project-inline-title {
+  font-size:11px;
+  font-weight:700;
+  color:var(--text-2);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.project-inline-title::before {
+  content:'';
+  width:4px;
+  height:12px;
+  border-radius:2px;
+  background:var(--accent);
+}
+.project-inline-actions {
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.project-inline-progress {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  color:var(--text-2);
+  font-weight:600;
+}
+.project-inline-progress-bar {
+  width:60px;
+  height:5px;
+  background:var(--card-2);
+  border-radius:3px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.project-inline-progress-fill {
+  height:100%;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition:width 0.4s ease;
+}
+
+.project-stages-inline {
+  display:flex;
+  gap:4px;
+  margin-bottom:14px;
+  padding:8px;
+  background:var(--bg-2);
+  border-radius:10px;
+  border:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.stage-chip {
+  flex:1;
+  min-width:60px;
+  text-align:center;
+  font-size:10px;
+  font-weight:600;
+  padding:5px 4px;
+  border-radius:6px;
+  color:var(--text-2);
+  background:transparent;
+  transition:var(--transition);
+  border:1px solid transparent;
+}
+.stage-chip.done {
+  color:var(--accent);
+  background:rgba(212,175,55,0.08);
+  border-color:rgba(212,175,55,0.25);
+}
+.stage-chip.current {
+  color:var(--accent-text);
+  background:var(--accent);
+  font-weight:700;
+  box-shadow:0 0 0 3px rgba(212,175,55,0.2);
+}
+
+.task-tree {
+  position:relative;
+  padding-right:22px;
+}
+[dir="ltr"] .task-tree { padding-right:0; padding-left:22px; }
+.task-tree::before {
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:14px;
+  right:8px;
+  width:2px;
+  background:linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  border-radius:2px;
+  opacity:0.6;
+}
+[dir="ltr"] .task-tree::before { right:auto; left:8px; }
+
+.task-node {
+  position:relative;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 11px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  transition:var(--transition);
+  font-size:12.5px;
+}
+.task-node::before {
+  content:'';
+  position:absolute;
+  right:-16px;
+  top:50%;
+  transform:translateY(-50%);
+  width:14px;
+  height:2px;
+  background:var(--border);
+}
+[dir="ltr"] .task-node::before { right:auto; left:-16px; }
+.task-node:hover {
+  border-color:var(--accent);
+  background:var(--card-2);
+}
+.task-node.done { opacity:0.5; }
+.task-node.done .task-title { text-decoration:line-through; }
+.task-node.overdue {
+  border-color:var(--danger);
+  background:rgba(248,113,113,0.06);
+}
+
+.task-priority-dot {
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(0,0,0,0.1);
+}
+.task-priority-dot.high { background:var(--danger); box-shadow:0 0 0 3px rgba(248,113,113,0.2); }
+.task-priority-dot.medium { background:var(--warning); box-shadow:0 0 0 3px rgba(251,191,36,0.2); }
+.task-priority-dot.low { background:var(--success); box-shadow:0 0 0 3px rgba(74,222,128,0.2); }
+
+.task-title {
+  flex:1;
+  font-size:13px;
+  font-weight:500;
+  color:var(--text);
+  word-break:break-word;
+}
+
+.task-due {
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:6px;
+  background:var(--card-2);
+  border:1px solid var(--border);
+  color:var(--text-2);
+  font-weight:600;
+  white-space:nowrap;
+}
+.task-due.overdue {
+  background:rgba(248,113,113,0.15);
+  border-color:var(--danger);
+  color:var(--danger);
+}
+.task-due.today {
+  background:rgba(212,175,55,0.15);
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.task-actions {
+  display:flex;
+  gap:4px;
+  opacity:0;
+  transition:var(--transition);
+}
+.task-node:hover .task-actions { opacity:1; }
+
+.project-task-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:10px;
+  padding:3px 8px;
+  border-radius:10px;
+  background:var(--card-2);
+  border:1px solid var(--border);
+  color:var(--text-2);
+  font-weight:600;
+}
+.project-task-badge.has-done {
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* ==================== IDEA LINKED BADGE ==================== */
+.idea-linked-info {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:10px;
+  color:var(--accent);
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(212,175,55,0.1);
+  border: 1px dashed rgba(212,175,55,0.4);
+}
+
+@media (max-width:600px) {
+  .cal-day { min-height:60px; padding:4px; }
+  .cal-day-items { display:none; }
+  .cal-day-count { font-size:8px; padding:1px 4px; }
+  .cal-title { font-size:14px; min-width:110px; }
+  .cal-toolbar { justify-content:center; }
+  .project-stages-inline { flex-wrap:wrap; }
+  .stage-chip { font-size:9px; min-width:50px; }
+  .task-node { font-size:12px; padding:8px 10px; }
+  .task-actions { opacity:1; }
+  .project-header { padding:14px; }
+  .project-inline-tasks { padding:0 14px 14px; }
+  .logo-badge-css { font-size: 13px; padding: 0 12px; height: 34px; letter-spacing: 2px; }
+  .project-icon { width: 42px; height: 42px; }
+}
+
+@media (max-width:500px) {
+  .app { padding:0 10px 100px; }
+  .stat-value { font-size:18px; }
+  .tab { padding:8px 12px; font-size:13px; }
+}
+</style>
+</head>
+<body data-theme="gold-black" dir="rtl">
+
+<div class="app">
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-badge-css"><span>EXTEEE</span></div>
+      </div>
+      <div class="header-controls">
+        <button class="icon-btn" id="langBtn" title="Language">🌐</button>
+        <button class="icon-btn" id="themeBtn" title="Theme">🎨</button>
+        <button class="icon-btn" id="saveBtn" title="Save">💾</button>
+        <button class="icon-btn" id="exportBtn" title="Export JSON">📤</button>
+        <button class="icon-btn" id="importBtn" title="Import JSON">📥</button>
+        <input type="file" id="importFile" accept=".json" style="display:none">
+        <input type="file" id="projectImageInput" accept="image/*" style="display:none">
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-page="dashboard">📊 <span data-i18n="dashboard">داشبورد</span></button>
+    <button class="tab" data-page="business">🏢 <span data-i18n="business">EXTEEE</span></button>
+    <button class="tab" data-page="ideas">💡 <span data-i18n="ideas">بانک ایده</span></button>
+    <button class="tab" data-page="finance">💰 <span data-i18n="finance">مالی</span></button>
+    <button class="tab" data-page="learning">📚 <span data-i18n="learning">یادگیری</span></button>
+    <button class="tab" data-page="health">💪 <span data-i18n="health">سلامتی</span></button>
+    <button class="tab" data-page="review">🔄 <span data-i18n="review">بازبینی</span></button>
+    <button class="tab" data-page="calendar">📅 <span data-i18n="calendar">تقویم</span></button>
+  </nav>
+
+  <section class="page active" id="page-dashboard">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-label" data-i18n="financialGoal">هدف مالی</div>
+        <div class="stat-value" id="dashFinance">0</div>
+        <div class="stat-sub" id="dashFinanceSub">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" data-i18n="activeProject">پروژه فعال</div>
+        <div class="stat-value" id="dashProject" style="font-size:15px;">—</div>
+        <div class="stat-sub" id="dashProjectStage">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" data-i18n="ideasBank">بانک ایده</div>
+        <div class="stat-value" id="dashIdeas">0</div>
+        <div class="stat-sub" data-i18n="ideasWaiting">ایده در انتظار</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" data-i18n="overdueTasks">تسک عقب‌افتاده</div>
+        <div class="stat-value" id="dashOverdue" style="color:var(--danger);">0</div>
+        <div class="stat-sub" data-i18n="needAttention">نیاز به توجه</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">
+          <span data-i18n="financeChart">نمودار پیشرفت مالی</span>
+          <span class="badge badge-accent" id="financePercent">0%</span>
+        </div>
+        <div class="chart-wrap">
+          <svg class="chart-svg" id="financeChart" viewBox="0 0 300 180" preserveAspectRatio="none"></svg>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          <span data-i18n="activeProjectStage">مرحله پروژه فعال</span>
+        </div>
+        <div id="projectStageBox">
+          <div class="empty" data-i18n="noProject">هنوز پروژه‌ای ثبت نشده</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">
+          <span data-i18n="recentIdeas">آخرین ایده‌ها</span>
+          <button class="btn btn-sm btn-ghost" onclick="openIdeaModal()">+ <span data-i18n="add">افزودن</span></button>
+        </div>
+        <div class="list" id="recentIdeasList"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          <span data-i18n="todayTasks">تسک‌های امروز</span>
+        </div>
+        <div class="list" id="todayTasksList"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="card-title">
+        <span data-i18n="weeklySummary">خلاصه هفتگی</span>
+        <span class="badge" id="weekRange">—</span>
+      </div>
+      <div id="weeklySummaryBox" class="empty" data-i18n="noData">داده‌ای موجود نیست</div>
+    </div>
+  </section>
+
+  <section class="page" id="page-business">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="projects">پروژه‌های EXTEEE</span>
+        <button class="btn btn-sm" onclick="openProjectModal()">+ <span data-i18n="newProject">پروژه جدید</span></button>
+      </div>
+      <div id="projectsList"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-ideas">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="quickIdea">ثبت سریع ایده</span>
+      </div>
+      <div class="form-row">
+        <input class="input" id="quickIdeaInput" placeholder="ایده‌ات را بنویس..." data-i18n-ph="ideaPlaceholder">
+        <button class="btn" onclick="quickAddIdea()">+ <span data-i18n="add">افزودن</span></button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <span data-i18n="allIdeas">همه ایده‌ها</span>
+        <select class="select" id="ideaFilter" style="width:auto;" onchange="renderIdeas()">
+          <option value="all" data-i18n="all">همه</option>
+          <option value="quarantine" data-i18n="quarantine">قرنطینه</option>
+          <option value="current" data-i18n="current">مربوط به پروژه فعلی</option>
+          <option value="review" data-i18n="needReview">نیاز به بررسی</option>
+          <option value="done" data-i18n="done">انجام شده</option>
+        </select>
+      </div>
+      <div class="list" id="ideasList"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-finance">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="financialGoalSettings">تنظیم هدف مالی</span>
+      </div>
+      <div class="form-row">
+        <input class="input" id="goalAmount" type="number" placeholder="مبلغ هدف" data-i18n-ph="goalAmount">
+        <input class="input" id="goalCurrent" type="number" placeholder="مبلغ فعلی" data-i18n-ph="goalCurrent">
+        <input class="input" id="goalDeadline" type="date">
+      </div>
+      <div class="form-row">
+        <input class="input" id="goalTitle" placeholder="عنوان هدف (مثلاً درآمد ماهانه)" data-i18n-ph="goalTitle">
+        <button class="btn" onclick="saveFinanceGoal()">💾 <span data-i18n="save">ذخیره</span></button>
+      </div>
+      <div class="progress-bar" style="margin-top:12px;">
+        <div class="progress-fill" id="financeProgressBar" style="width:0%"></div>
+      </div>
+      <div style="text-align:center;margin-top:8px;font-size:13px;color:var(--text-2);" id="financeGoalText">—</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-i18n="transactions">تراکنش‌ها</span>
+        <button class="btn btn-sm" onclick="openTransactionModal()">+ <span data-i18n="add">افزودن</span></button>
+      </div>
+      <div class="list" id="transactionsList"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-learning">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="learningItems">مسیرهای یادگیری</span>
+        <button class="btn btn-sm" onclick="openLearningModal()">+ <span data-i18n="add">افزودن</span></button>
+      </div>
+      <div class="list" id="learningList"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-health">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="habits">عادت‌های روزانه</span>
+        <button class="btn btn-sm" onclick="openHabitModal()">+ <span data-i18n="add">افزودن</span></button>
+      </div>
+      <div id="habitsList"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-review">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">
+        <span data-i18n="weeklyReview">بازبینی هفتگی</span>
+        <button class="btn btn-sm" onclick="generateReview()">🔄 <span data-i18n="generate">تولید گزارش</span></button>
+      </div>
+      <div id="reviewBox" class="empty" data-i18n="clickGenerate">برای دیدن گزارش، دکمه تولید را بزن</div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <span data-i18n="reviewChecklist">چک‌لیست بازبینی</span>
+      </div>
+      <div class="list" id="reviewChecklist"></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-calendar">
+    <div class="card" style="margin-bottom:16px;">
+      <div class="cal-toolbar">
+        <div class="cal-nav">
+          <button class="icon-btn" onclick="calPrev()">‹</button>
+          <div class="cal-title" id="calTitle">—</div>
+          <button class="icon-btn" onclick="calNext()">›</button>
+          <button class="btn btn-sm btn-ghost" onclick="calToday()" data-i18n="today">امروز</button>
+        </div>
+        <div class="cal-view-toggle">
+          <button class="cal-view-btn active" data-view="month" onclick="setCalView('month')" data-i18n="monthView">ماهانه</button>
+          <button class="cal-view-btn" data-view="week" onclick="setCalView('week')" data-i18n="weekView">هفتگی</button>
+        </div>
+      </div>
+      <div class="cal-weekdays" id="calWeekdays"></div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+
+    <div class="card" id="calDayPanel">
+      <div class="card-title">
+        <span id="calDayTitle" data-i18n="selectDay">یک روز انتخاب کن</span>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-sm" onclick="addTaskToSelectedDay()">+ <span data-i18n="newTask">تسک</span></button>
+          <button class="btn btn-sm btn-ghost" onclick="addIdeaToSelectedDay()">+ <span data-i18n="newIdea">ایده</span></button>
+        </div>
+      </div>
+      <div id="calDayContent" class="empty" data-i18n="selectDayHint">روی یک روز کلیک کن تا جزئیاتش رو ببینی</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="fab">
+  <div class="fab-menu" id="fabMenu">
+    <button class="fab-item" onclick="openIdeaModal(); closeFab();">💡 <span data-i18n="newIdea">ایده جدید</span></button>
+    <button class="fab-item" onclick="openQuickNote(); closeFab();">📝 <span data-i18n="quickNote">یادداشت سریع</span></button>
+    <button class="fab-item" onclick="openTaskModal(); closeFab();">✅ <span data-i18n="newTask">تسک جدید</span></button>
+  </div>
+  <button class="fab-main" onclick="toggleFab()">+</button>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<div class="modal-overlay" id="themeOverlay">
+  <div class="modal">
+    <div class="modal-title" data-i18n="chooseTheme">انتخاب تم</div>
+    <div class="theme-grid" id="themeGrid"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeThemeModal()" data-i18n="close">بستن</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DEFAULT_STATE = {
+  meta: { lang: 'fa', theme: 'gold-black', lastSaved: null, expanded: [] },
+  finance: { title: 'درآمد ماهانه EXTEEE', amount: 50000000, current: 0, deadline: '', transactions: [] },
+  projects: [],
+  ideas: [],
+  learning: [],
+  habits: [],
+  reviews: []
+};
+
+let state = loadState();
+let currentProjectId = null;
+let pendingImageProjectId = null;
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem('EXTEEE_SYSTEM');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      return { ...DEFAULT_STATE, ...parsed, meta: { ...DEFAULT_STATE.meta, ...(parsed.meta||{}) } };
+    }
+  } catch(e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_STATE));
+}
+function saveState(silent) {
+  state.meta.lastSaved = new Date().toISOString();
+  localStorage.setItem('EXTEEE_SYSTEM', JSON.stringify(state));
+  if (!silent) toast('✅ ' + t('saved'));
+}
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `EXTEEE-backup-${today()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('📤 ' + t('exported'));
+}
+function importJSON(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      state = { ...DEFAULT_STATE, ...data, meta: { ...DEFAULT_STATE.meta, ...(data.meta||{}) } };
+      saveState(true);
+      applyTheme(state.meta.theme);
+      applyLang(state.meta.lang);
+      renderAll();
+      toast('📥 ' + t('imported'));
+    } catch(err) { toast('❌ ' + t('importError')); }
+  };
+  reader.readAsText(file);
+}
+
+const I18N = {
+  fa: {
+    dashboard:'داشبورد', business:'EXTEEE', ideas:'بانک ایده', finance:'مالی', learning:'یادگیری', health:'سلامتی', review:'بازبینی', calendar:'تقویم',
+    financialGoal:'هدف مالی', activeProject:'پروژه فعال', ideasBank:'بانک ایده', overdueTasks:'تسک عقب‌افتاده', needAttention:'نیاز به توجه', ideasWaiting:'ایده در انتظار',
+    financeChart:'نمودار پیشرفت مالی', activeProjectStage:'مرحله پروژه فعال', recentIdeas:'آخرین ایده‌ها', todayTasks:'تسک‌های امروز', weeklySummary:'خلاصه هفتگی',
+    noProject:'هنوز پروژه‌ای ثبت نشده', noData:'داده‌ای موجود نیست',
+    add:'افزودن', newProject:'پروژه جدید', projects:'پروژه‌های EXTEEE',
+    quickIdea:'ثبت سریع ایده', ideaPlaceholder:'ایده‌ات را بنویس...', allIdeas:'همه ایده‌ها', all:'همه', quarantine:'قرنطینه', current:'مربوط به پروژه فعلی', needReview:'نیاز به بررسی', done:'انجام شده',
+    financialGoalSettings:'تنظیم هدف مالی', goalAmount:'مبلغ هدف', goalCurrent:'مبلغ فعلی', goalTitle:'عنوان هدف', save:'ذخیره', transactions:'تراکنش‌ها',
+    learningItems:'مسیرهای یادگیری', habits:'عادت‌های روزانه',
+    weeklyReview:'بازبینی هفتگی', generate:'تولید گزارش', reviewChecklist:'چک‌لیست بازبینی', clickGenerate:'برای دیدن گزارش، دکمه تولید را بزن',
+    newIdea:'ایده جدید', quickNote:'یادداشت سریع', newTask:'تسک جدید', chooseTheme:'انتخاب تم', close:'بستن',
+    saved:'ذخیره شد', exported:'خروجی گرفته شد', imported:'وارد شد', importError:'خطا در وارد کردن فایل',
+    delete:'حذف', cancel:'لغو', title:'عنوان', note:'یادداشت', category:'دسته', priority:'اولویت', high:'بالا', medium:'متوسط', low:'پایین',
+    dueDate:'تاریخ سررسید', projectName:'نام پروژه', stage:'مرحله',
+    stageIdea:'ایده', stageResearch:'تحقیق', stageBuild:'ساخت', stageTest:'تست', stageLaunch:'عرضه',
+    amount:'مبلغ', date:'تاریخ', type:'نوع', income:'درآمد', expense:'هزینه',
+    skill:'مهارت', resource:'منبع', progress:'پیشرفت', habitName:'نام عادت', week:'هفته',
+    noTransactions:'تراکنشی ثبت نشده', noLearning:'مسیری ثبت نشده', noHabits:'عادتی ثبت نشده', noIdeas:'ایده‌ای ثبت نشده', noTasks:'تسکی ثبت نشده',
+    deleteConfirm:'مطمئنی می‌خوای حذف کنی؟', projectTasks:'تسک‌های این پروژه', addTask:'افزودن تسک', noProjects:'پروژه‌ای ثبت نشده',
+    weekDone:'کارهای انجام‌شده این هفته', weekPending:'کارهای باقی‌مانده', ideasCaptured:'ایده‌های ثبت‌شده', financeProgress:'پیشرفت مالی',
+    today:'امروز', monthView:'ماهانه', weekView:'هفتگی', selectDay:'یک روز انتخاب کن', selectDayHint:'روی یک روز کلیک کن تا جزئیاتش رو ببینی',
+    tasks:'تسک‌ها', dayIdeas:'ایده‌های این روز', dayFinance:'تراکنش‌های مالی', dayGoal:'هدف مالی', noItemsThisDay:'چیزی برای این روز ثبت نشده',
+    allDayItems:'همه آیتم‌های این روز', overdue:'عقب‌افتاده',
+    openProject:'باز کردن پروژه', projectProgress:'پیشرفت پروژه', taskCount:'تعداد تسک',
+    pickProject:'این ایده رو به کدوم پروژه وصل کنم؟', existingProjects:'پروژه‌های موجود',
+    createNewProject:'+ پروژه جدید با این اسم', or:'— یا —',
+    linkedTo:'وصل شده به', linked:'وصل شده', attachToProject:'وصل به پروژه',
+    projectCreated:'پروژه جدید ساخته شد', ideaLinked:'ایده به پروژه وصل شد',
+    clickToChangeImage:'کلیک کنید برای عکس', removeImage:'حذف عکس'
+  },
+  en: {
+    dashboard:'Dashboard', business:'EXTEEE', ideas:'Idea Bank', finance:'Finance', learning:'Learning', health:'Health', review:'Review', calendar:'Calendar',
+    financialGoal:'Financial Goal', activeProject:'Active Project', ideasBank:'Idea Bank', overdueTasks:'Overdue Tasks', needAttention:'Need attention', ideasWaiting:'Ideas waiting',
+    financeChart:'Finance Progress Chart', activeProjectStage:'Active Project Stage', recentIdeas:'Recent Ideas', todayTasks:'Today Tasks', weeklySummary:'Weekly Summary',
+    noProject:'No project yet', noData:'No data',
+    add:'Add', newProject:'New Project', projects:'EXTEEE Projects',
+    quickIdea:'Quick Idea Capture', ideaPlaceholder:'Write your idea...', allIdeas:'All Ideas', all:'All', quarantine:'Quarantine', current:'Current Project', needReview:'Need Review', done:'Done',
+    financialGoalSettings:'Financial Goal Settings', goalAmount:'Goal Amount', goalCurrent:'Current Amount', goalTitle:'Goal Title', save:'Save', transactions:'Transactions',
+    learningItems:'Learning Paths', habits:'Daily Habits',
+    weeklyReview:'Weekly Review', generate:'Generate Report', reviewChecklist:'Review Checklist', clickGenerate:'Click generate to see report',
+    newIdea:'New Idea', quickNote:'Quick Note', newTask:'New Task', chooseTheme:'Choose Theme', close:'Close',
+    saved:'Saved', exported:'Exported', imported:'Imported', importError:'Import error',
+    delete:'Delete', cancel:'Cancel', title:'Title', note:'Note', category:'Category', priority:'Priority', high:'High', medium:'Medium', low:'Low',
+    dueDate:'Due Date', projectName:'Project Name', stage:'Stage',
+    stageIdea:'Idea', stageResearch:'Research', stageBuild:'Build', stageTest:'Test', stageLaunch:'Launch',
+    amount:'Amount', date:'Date', type:'Type', income:'Income', expense:'Expense',
+    skill:'Skill', resource:'Resource', progress:'Progress', habitName:'Habit Name', week:'Week',
+    noTransactions:'No transactions', noLearning:'No learning paths', noHabits:'No habits', noIdeas:'No ideas', noTasks:'No tasks',
+    deleteConfirm:'Are you sure?', projectTasks:'Project Tasks', addTask:'Add Task', noProjects:'No projects',
+    weekDone:'Done this week', weekPending:'Pending', ideasCaptured:'Ideas captured', financeProgress:'Finance progress',
+    today:'Today', monthView:'Month', weekView:'Week', selectDay:'Select a day', selectDayHint:'Click on a day to see details',
+    tasks:'Tasks', dayIdeas:'Ideas of this day', dayFinance:'Transactions', dayGoal:'Financial Goal', noItemsThisDay:'Nothing for this day',
+    allDayItems:'All items of this day', overdue:'Overdue',
+    openProject:'Open project', projectProgress:'Project progress', taskCount:'Task count',
+    pickProject:'Which project to link this idea to?', existingProjects:'Existing projects',
+    createNewProject:'+ New project with this name', or:'— or —',
+    linkedTo:'Linked to', linked:'Linked', attachToProject:'Link to project',
+    projectCreated:'New project created', ideaLinked:'Idea linked to project',
+    clickToChangeImage:'Click to set image', removeImage:'Remove image'
+  }
+};
+function t(key) { return I18N[state.meta.lang][key] || key; }
+function applyLang(lang) {
+  state.meta.lang = lang;
+  const isFa = lang === 'fa';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isFa ? 'rtl' : 'ltr';
+  document.body.dir = isFa ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[lang][key]) el.textContent = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (I18N[lang][key]) el.placeholder = I18N[lang][key];
+  });
+  saveState(true);
+  renderAll();
+}
+
+const THEMES = [
+  { id:'gold-black', name:'Gold Black', colors:['#0d0d0f','#d4af37'] },
+  { id:'light', name:'Light Minimal', colors:['#f7f7fa','#6366f1'] },
+  { id:'neon', name:'Dark Neon', colors:['#0a0a12','#00ffd5'] },
+  { id:'ocean', name:'Ocean Blue', colors:['#0a1628','#38bdf8'] },
+  { id:'forest', name:'Forest Green', colors:['#0d1510','#4ade80'] },
+  { id:'purple', name:'Purple Haze', colors:['#120a1f','#a855f7'] }
+];
+function applyTheme(themeId) {
+  state.meta.theme = themeId;
+  document.body.setAttribute('data-theme', themeId);
+  saveState(true);
+  renderThemeGrid();
+}
+function renderThemeGrid() {
+  const grid = document.getElementById('themeGrid');
+  grid.innerHTML = THEMES.map(th => `
+    <div class="theme-option ${state.meta.theme === th.id ? 'active' : ''}" onclick="applyTheme('${th.id}');closeThemeModal();">
+      <div class="theme-swatch" style="background:linear-gradient(135deg, ${th.colors[0]} 50%, ${th.colors[1]} 50%);"></div>
+      <div>${th.name}</div>
+    </div>
+  `).join('');
+}
+function openThemeModal() { document.getElementById('themeOverlay').classList.add('active'); }
+function closeThemeModal() { document.getElementById('themeOverlay').classList.remove('active'); }
+
+function openModal(html) {
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target.id === 'modalOverlay') closeModal(); });
+document.getElementById('themeOverlay').addEventListener('click', e => { if (e.target.id === 'themeOverlay') closeThemeModal(); });
+
+let toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function fmtNum(n) { return Number(n||0).toLocaleString(state.meta.lang === 'fa' ? 'fa-IR' : 'en-US'); }
+function escapeHtml(s) { return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+/* ========== تاریخ محلی (رفع باگ تقویم) ========== */
+function toLocalKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+function today() { return toLocalKey(new Date()); }
+function formatDateKey(date) { return toLocalKey(date); }
+
+function toggleFab() { document.getElementById('fabMenu').classList.toggle('active'); }
+function closeFab() { document.getElementById('fabMenu').classList.remove('active'); }
+
+function isProjectExpanded(id) {
+  return (state.meta.expanded || []).includes(id);
+}
+function toggleProject(id) {
+  if (!state.meta.expanded) state.meta.expanded = [];
+  if (state.meta.expanded.includes(id)) {
+    state.meta.expanded = state.meta.expanded.filter(x => x !== id);
+  } else {
+    state.meta.expanded.push(id);
+  }
+  saveState(true);
+  renderProjects();
+}
+
+function renderAll() {
+  renderDashboard();
+  renderProjects();
+  renderIdeas();
+  renderFinance();
+  renderLearning();
+  renderHabits();
+  renderReviewChecklist();
+  renderCalendar();
+}
+
+function renderDashboard() {
+  const f = state.finance;
+  const pct = f.amount > 0 ? Math.min(100, Math.round((f.current / f.amount) * 100)) : 0;
+  document.getElementById('dashFinance').textContent = fmtNum(f.current);
+  document.getElementById('dashFinanceSub').textContent = `${pct}% / ${fmtNum(f.amount)}`;
+  document.getElementById('financePercent').textContent = pct + '%';
+  document.getElementById('financeProgressBar').style.width = pct + '%';
+  document.getElementById('financeGoalText').textContent = f.title || '—';
+  renderFinanceChart(pct);
+
+  const active = state.projects[0];
+  if (active) {
+    document.getElementById('dashProject').textContent = active.name;
+    const stageKey = 'stage' + active.stage.charAt(0).toUpperCase() + active.stage.slice(1);
+    document.getElementById('dashProjectStage').textContent = t(stageKey) || active.stage;
+    renderProjectStageBox(active);
+  } else {
+    document.getElementById('dashProject').textContent = '—';
+    document.getElementById('dashProjectStage').textContent = '—';
+    document.getElementById('projectStageBox').innerHTML = `<div class="empty">${t('noProject')}</div>`;
+  }
+
+  document.getElementById('dashIdeas').textContent = state.ideas.filter(i => i.status !== 'done').length;
+  renderRecentIdeas();
+
+  const overdue = getAllTasks().filter(tk => !tk.done && tk.due && tk.due < today());
+  document.getElementById('dashOverdue').textContent = overdue.length;
+
+  renderTodayTasks();
+  renderWeeklySummary();
+}
+
+function renderFinanceChart(pct) {
+  const svg = document.getElementById('financeChart');
+  const w = 300, h = 180, pad = 20;
+  const points = [];
+  for (let i = 6; i >= 0; i--) {
+    const val = Math.max(0, pct - i * (pct / 8));
+    points.push({ x: pad + ((6 - i) / 6) * (w - pad * 2), y: h - pad - (val / 100) * (h - pad * 2) });
+  }
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+  const areaPath = linePath + ` L ${points[points.length-1].x} ${h-pad} L ${points[0].x} ${h-pad} Z`;
+  let gridLines = '';
+  for (let i = 0; i <= 4; i++) {
+    const y = pad + (i / 4) * (h - pad * 2);
+    gridLines += `<line class="chart-grid" x1="${pad}" y1="${y}" x2="${w-pad}" y2="${y}"/>`;
+  }
+  const dots = points.map(p => `<circle class="chart-dot" cx="${p.x}" cy="${p.y}" r="3"/>`).join('');
+  svg.innerHTML = gridLines + `<path class="chart-area" d="${areaPath}"/>` + `<path class="chart-line" d="${linePath}"/>` + dots;
+}
+
+function renderProjectStageBox(project) {
+  const stages = ['idea', 'research', 'build', 'test', 'launch'];
+  const currentIdx = stages.indexOf(project.stage);
+  const steps = stages.map((s, i) => {
+    const done = i <= currentIdx;
+    const key = 'stage' + s.charAt(0).toUpperCase() + s.slice(1);
+    return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <div class="checkbox ${done ? 'checked' : ''}" style="cursor:default;">✓</div>
+      <span style="font-size:13px;${done ? 'color:var(--accent);font-weight:600;' : 'color:var(--text-2);'}">${t(key)}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('projectStageBox').innerHTML = steps;
+}
+
+function renderRecentIdeas() {
+  const list = document.getElementById('recentIdeasList');
+  const recent = state.ideas.slice(0, 5);
+  if (!recent.length) { list.innerHTML = `<div class="empty">${t('noIdeas')}</div>`; return; }
+  list.innerHTML = recent.map(i => `
+    <div class="list-item">
+      <span class="badge badge-${i.status === 'done' ? 'success' : i.status === 'current' ? 'accent' : 'warning'}">${t(i.status)}</span>
+      <span class="item-title">${escapeHtml(i.title)}</span>
+    </div>
+  `).join('');
+}
+
+function renderTodayTasks() {
+  const list = document.getElementById('todayTasksList');
+  const tasks = getAllTasks().filter(tk => !tk.done).slice(0, 6);
+  if (!tasks.length) { list.innerHTML = `<div class="empty">${t('noTasks')}</div>`; return; }
+  list.innerHTML = tasks.map(tk => `
+    <div class="list-item ${tk.done ? 'done' : ''}">
+      <div class="checkbox ${tk.done ? 'checked' : ''}" onclick="toggleTask('${tk.projectId}','${tk.id}')">✓</div>
+      <span class="item-title">${escapeHtml(tk.title)}</span>
+      ${tk.due ? `<span class="item-meta">${tk.due}</span>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderWeeklySummary() {
+  const box = document.getElementById('weeklySummaryBox');
+  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
+  const doneTasks = getAllTasks().filter(tk => tk.done).length;
+  const totalTasks = getAllTasks().length;
+  const ideasWeek = state.ideas.filter(i => new Date(i.createdAt) >= weekAgo).length;
+  const f = state.finance;
+  const pct = f.amount > 0 ? Math.round((f.current / f.amount) * 100) : 0;
+  const now = new Date();
+  const start = new Date(now); start.setDate(start.getDate() - 6);
+  document.getElementById('weekRange').textContent = `${toLocalKey(start)} → ${toLocalKey(now)}`;
+  box.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;">
+      <div><div style="font-size:11px;color:var(--text-2);">${t('weekDone')}</div><div style="font-size:18px;font-weight:700;color:var(--accent);">${doneTasks} / ${totalTasks}</div></div>
+      <div><div style="font-size:11px;color:var(--text-2);">${t('ideasCaptured')}</div><div style="font-size:18px;font-weight:700;color:var(--accent);">${ideasWeek}</div></div>
+      <div><div style="font-size:11px;color:var(--text-2);">${t('financeProgress')}</div><div style="font-size:18px;font-weight:700;color:var(--accent);">${pct}%</div></div>
+    </div>
+  `;
+}
+
+function getAllTasks() {
+  const all = [];
+  state.projects.forEach(p => {
+    (p.tasks || []).forEach(tk => all.push({ ...tk, projectId: p.id, projectName: p.name }));
+  });
+  return all;
+}
+function toggleTask(projectId, taskId) {
+  const p = state.projects.find(x => x.id === projectId);
+  if (!p) return;
+  const tk = p.tasks.find(x => x.id === taskId);
+  if (!tk) return;
+  tk.done = !tk.done;
+  saveState(true);
+  renderAll();
+}
+
+/* ==================== PROJECTS ==================== */
+function renderProjects() {
+  const list = document.getElementById('projectsList');
+  if (!state.projects.length) { list.innerHTML = `<div class="empty">${t('noProjects')}</div>`; return; }
+  const stages = ['idea', 'research', 'build', 'test', 'launch'];
+  list.innerHTML = state.projects.map(p => {
+    const stageKey = 'stage' + p.stage.charAt(0).toUpperCase() + p.stage.slice(1);
+    const tasks = p.tasks || [];
+    const taskCount = tasks.length;
+    const doneCount = tasks.filter(tk => tk.done).length;
+    const pct = taskCount > 0 ? Math.round((doneCount / taskCount) * 100) : 0;
+    const isExpanded = isProjectExpanded(p.id);
+
+    const currentIdx = stages.indexOf(p.stage);
+    const stageChips = stages.map((s, i) => {
+      const key = 'stage' + s.charAt(0).toUpperCase() + s.slice(1);
+      let cls = 'stage-chip';
+      if (i < currentIdx) cls += ' done';
+      if (i === currentIdx) cls += ' current';
+      return `<div class="${cls}">${t(key)}</div>`;
+    }).join('');
+
+    const taskNodes = taskCount ? tasks.map(tk => {
+      const isOverdue = !tk.done && tk.due && tk.due < today();
+      const isToday = !tk.done && tk.due === today();
+      let dueCls = 'task-due';
+      if (isOverdue) dueCls += ' overdue';
+      else if (isToday) dueCls += ' today';
+      return `
+        <div class="task-node ${tk.done ? 'done' : ''} ${isOverdue ? 'overdue' : ''}">
+          <div class="checkbox ${tk.done ? 'checked' : ''}" onclick="event.stopPropagation();toggleTask('${p.id}','${tk.id}')">✓</div>
+          <div class="task-priority-dot ${tk.priority || 'medium'}"></div>
+          <span class="task-title">${escapeHtml(tk.title)}</span>
+          ${tk.due ? `<span class="${dueCls}">${tk.due}</span>` : ''}
+          <div class="task-actions">
+            <button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();deleteTask('${p.id}','${tk.id}')">🗑</button>
+          </div>
+        </div>
+      `;
+    }).join('') : `<div class="empty" style="padding:16px 10px;font-size:12px;">${t('noTasks')}</div>`;
+
+    const iconHtml = p.image 
+      ? `<div class="project-icon has-image" onclick="event.stopPropagation();triggerProjectImageUpload('${p.id}')" title="${t('clickToChangeImage')}">
+          <img src="${p.image}" alt="">
+          <button class="project-icon-remove" onclick="removeProjectImage('${p.id}',event)" title="${t('removeImage')}">🗑</button>
+         </div>`
+      : `<div class="project-icon" onclick="event.stopPropagation();triggerProjectImageUpload('${p.id}')" title="${t('clickToChangeImage')}">
+          ${escapeHtml(p.name.charAt(0).toUpperCase())}
+          <span class="project-icon-upload-hint">📷</span>
+         </div>`;
+
+    return `
+      <div class="project-card ${isExpanded ? 'expanded' : ''}">
+        <div class="project-header" onclick="toggleProject('${p.id}')">
+          <div class="project-info">
+            ${iconHtml}
+            <div class="project-titles">
+              <div class="project-name">${escapeHtml(p.name)}</div>
+              <div class="project-meta-line">
+                <span class="badge badge-accent">${t(stageKey)}</span>
+                <span class="project-task-badge ${doneCount > 0 ? 'has-done' : ''}">✓ ${doneCount}/${taskCount}</span>
+                ${taskCount > 0 ? `<span style="font-size:10px;color:var(--text-2);">${pct}%</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <div class="project-actions">
+            <div class="project-expand-icon">‹</div>
+          </div>
+        </div>
+
+        <div class="project-tasks-panel ${isExpanded ? 'open' : ''}">
+          <div class="project-inline-tasks">
+            <div class="project-stages-inline">${stageChips}</div>
+            <div class="project-inline-header">
+              <div class="project-inline-title">${t('projectTasks')}</div>
+              <div class="project-inline-actions">
+                ${taskCount > 0 ? `
+                  <div class="project-inline-progress">
+                    <div class="project-inline-progress-bar">
+                      <div class="project-inline-progress-fill" style="width:${pct}%"></div>
+                    </div>
+                    <span>${pct}%</span>
+                  </div>
+                ` : ''}
+                <select class="select" style="width:auto;font-size:11px;padding:5px 8px;" onclick="event.stopPropagation()" onchange="updateProjectStage('${p.id}', this.value)">
+                  ${stages.map(s => {
+                    const k = 'stage' + s.charAt(0).toUpperCase() + s.slice(1);
+                    return `<option value="${s}" ${p.stage === s ? 'selected' : ''}>${t(k)}</option>`;
+                  }).join('')}
+                </select>
+                <button class="btn btn-sm" onclick="event.stopPropagation();openTaskModal('${p.id}')">+ ${t('addTask')}</button>
+                <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();deleteProject('${p.id}')">🗑</button>
+              </div>
+            </div>
+            <div class="task-tree">
+              ${taskNodes}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateProjectStage(id, stage) {
+  const p = state.projects.find(x => x.id === id);
+  if (p) { p.stage = stage; saveState(true); renderAll(); }
+}
+
+function deleteProject(id) {
+  if (!confirm(t('deleteConfirm'))) return;
+  state.projects = state.projects.filter(x => x.id !== id);
+  if (state.meta.expanded) state.meta.expanded = state.meta.expanded.filter(x => x !== id);
+  saveState(true); renderAll();
+}
+
+function deleteTask(projectId, taskId) {
+  const p = state.projects.find(x => x.id === projectId);
+  if (!p) return;
+  p.tasks = p.tasks.filter(x => x.id !== taskId);
+  saveState(true); renderAll();
+}
+
+/* ========== عکس پروژه ========== */
+function triggerProjectImageUpload(projectId) {
+  pendingImageProjectId = projectId;
+  document.getElementById('projectImageInput').click();
+}
+function removeProjectImage(projectId, event) {
+  event.stopPropagation();
+  const p = state.projects.find(x => x.id === projectId);
+  if (p) { 
+    delete p.image; 
+    saveState(true); 
+    renderProjects(); 
+    toast('🗑 ' + t('removeImage'));
+  }
+}
+document.getElementById('projectImageInput').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file || !pendingImageProjectId) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const p = state.projects.find(x => x.id === pendingImageProjectId);
+    if (p) {
+      p.image = ev.target.result;
+      saveState(true);
+      renderProjects();
+      toast('🖼️ ✓');
+    }
+    pendingImageProjectId = null;
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+});
+
+function openProjectModal() {
+  openModal(`
+    <div class="modal-title">${t('newProject')}</div>
+    <input class="input" id="mProjectName" placeholder="${t('projectName')}" style="margin-bottom:10px;">
+    <select class="select" id="mProjectStage" style="margin-bottom:10px;">
+      <option value="idea">${t('stageIdea')}</option>
+      <option value="research">${t('stageResearch')}</option>
+      <option value="build">${t('stageBuild')}</option>
+      <option value="test">${t('stageTest')}</option>
+      <option value="launch">${t('stageLaunch')}</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveProject()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveProject() {
+  const name = document.getElementById('mProjectName').value.trim();
+  const stage = document.getElementById('mProjectStage').value;
+  if (!name) return;
+  const newId = uid();
+  state.projects.push({ id: newId, name, stage, tasks: [], createdAt: new Date().toISOString() });
+  if (!state.meta.expanded) state.meta.expanded = [];
+  state.meta.expanded.push(newId);
+  saveState(true); closeModal(); renderAll();
+}
+function openTaskModal(projectId) {
+  const pid = projectId || (currentProjectId || (state.projects[0] && state.projects[0].id));
+  if (!pid) { toast('❌ ' + t('noProjects')); return; }
+  openModal(`
+    <div class="modal-title">${t('newTask')}</div>
+    <input class="input" id="mTaskTitle" placeholder="${t('title')}" style="margin-bottom:10px;">
+    <input class="input" id="mTaskDue" type="date" style="margin-bottom:10px;">
+    <select class="select" id="mTaskPriority" style="margin-bottom:10px;">
+      <option value="high">${t('high')}</option>
+      <option value="medium" selected>${t('medium')}</option>
+      <option value="low">${t('low')}</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveTask('${pid}')">${t('save')}</button>
+    </div>
+  `);
+}
+function saveTask(projectId) {
+  const title = document.getElementById('mTaskTitle').value.trim();
+  if (!title) return;
+  const due = document.getElementById('mTaskDue').value;
+  const priority = document.getElementById('mTaskPriority').value;
+  const p = state.projects.find(x => x.id === projectId);
+  if (!p) return;
+  p.tasks = p.tasks || [];
+  p.tasks.push({ id: uid(), title, due, priority, done: false, createdAt: new Date().toISOString() });
+  if (!state.meta.expanded) state.meta.expanded = [];
+  if (!state.meta.expanded.includes(projectId)) state.meta.expanded.push(projectId);
+  saveState(true); closeModal(); renderAll();
+}
+
+/* ==================== IDEAS ==================== */
+function renderIdeas() {
+  const list = document.getElementById('ideasList');
+  const filter = document.getElementById('ideaFilter').value;
+  let items = state.ideas;
+  if (filter !== 'all') items = items.filter(i => i.status === filter);
+  if (!items.length) { list.innerHTML = `<div class="empty">${t('noIdeas')}</div>`; return; }
+  list.innerHTML = items.map(i => {
+    const linkedBadge = i.linkedProjectName 
+      ? `<span class="idea-linked-info">🔗 ${t('linkedTo')}: ${escapeHtml(i.linkedProjectName)}</span>` 
+      : '';
+    return `
+      <div class="list-item">
+        <span class="badge badge-${i.status === 'done' ? 'success' : i.status === 'current' ? 'accent' : 'warning'}">${t(i.status)}</span>
+        <span class="item-title">${escapeHtml(i.title)}</span>
+        ${linkedBadge}
+        <select class="select" style="width:auto;font-size:11px;padding:4px 8px;" onchange="updateIdeaStatus('${i.id}', this.value)">
+          <option value="quarantine" ${i.status==='quarantine'?'selected':''}>${t('quarantine')}</option>
+          <option value="current" ${i.status==='current'?'selected':''}>${t('current')}</option>
+          <option value="review" ${i.status==='review'?'selected':''}>${t('needReview')}</option>
+          <option value="done" ${i.status==='done'?'selected':''}>${t('done')}</option>
+        </select>
+        <button class="btn btn-sm btn-ghost" onclick="deleteIdea('${i.id}')">🗑</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function quickAddIdea() {
+  const input = document.getElementById('quickIdeaInput');
+  const title = input.value.trim();
+  if (!title) return;
+  state.ideas.unshift({ id: uid(), title, status: 'quarantine', category: '', note: '', createdAt: new Date().toISOString() });
+  input.value = '';
+  saveState(true); renderAll();
+  toast('💡 ' + t('saved'));
+}
+
+function openIdeaModal() {
+  openModal(`
+    <div class="modal-title">${t('newIdea')}</div>
+    <input class="input" id="mIdeaTitle" placeholder="${t('title')}" style="margin-bottom:10px;">
+    <textarea class="textarea" id="mIdeaNote" placeholder="${t('note')}" style="margin-bottom:10px;"></textarea>
+    <select class="select" id="mIdeaStatus" style="margin-bottom:10px;">
+      <option value="quarantine">${t('quarantine')}</option>
+      <option value="current">${t('current')}</option>
+      <option value="review">${t('needReview')}</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveIdea()">${t('save')}</button>
+    </div>
+  `);
+}
+
+function saveIdea() {
+  const title = document.getElementById('mIdeaTitle').value.trim();
+  if (!title) return;
+  const status = document.getElementById('mIdeaStatus').value;
+  const newIdea = {
+    id: uid(), title,
+    note: document.getElementById('mIdeaNote').value,
+    status: status,
+    category: '', createdAt: new Date().toISOString()
+  };
+  state.ideas.unshift(newIdea);
+  saveState(true); closeModal();
+  if (status === 'current') {
+    openProjectPickerForIdea(newIdea.id);
+  } else {
+    renderAll();
+  }
+}
+
+function updateIdeaStatus(id, status) {
+  const i = state.ideas.find(x => x.id === id);
+  if (!i) return;
+  if (status === 'current') {
+    openProjectPickerForIdea(id);
+  } else {
+    i.status = status;
+    if (status !== 'current') {
+      delete i.linkedProjectId;
+      delete i.linkedProjectName;
+    }
+    saveState(true); renderAll();
+  }
+}
+
+function openProjectPickerForIdea(ideaId) {
+  const idea = state.ideas.find(x => x.id === ideaId);
+  if (!idea) return;
+  const projects = state.projects;
+  openModal(`
+    <div class="modal-title">🔗 ${t('pickProject')}</div>
+    <div style="font-size:13px;color:var(--text-2);margin-bottom:14px;padding:10px;background:var(--card-2);border-radius:8px;border:1px solid var(--border);">
+      💡 ${escapeHtml(idea.title)}
+    </div>
+    ${projects.length ? `
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;font-weight:700;color:var(--text-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">${t('existingProjects')}</div>
+        <div style="display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto;">
+          ${projects.map(p => `
+            <button class="btn btn-ghost" style="justify-content:flex-start;text-align:${state.meta.lang === 'fa' ? 'right' : 'left'};" onclick="attachIdeaToProject('${ideaId}','${p.id}')">
+              <span style="font-size:16px;">🏢</span>
+              <span>${escapeHtml(p.name)}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text-2);margin:14px 0;">${t('or')}</div>
+    ` : ''}
+    <button class="btn" style="width:100%;justify-content:center;" onclick="createProjectFromIdea('${ideaId}')">
+      ${t('createNewProject')}
+    </button>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cancelIdeaLink('${ideaId}')">${t('cancel')}</button>
+    </div>
+  `);
+}
+
+function cancelIdeaLink(ideaId) {
+  const i = state.ideas.find(x => x.id === ideaId);
+  if (i && !i.linkedProjectId) {
+    i.status = 'quarantine';
+    saveState(true);
+  }
+  closeModal();
+  renderAll();
+}
+
+function attachIdeaToProject(ideaId, projectId) {
+  const idea = state.ideas.find(x => x.id === ideaId);
+  const p = state.projects.find(x => x.id === projectId);
+  if (!idea || !p) return;
+  idea.status = 'current';
+  idea.linkedProjectId = projectId;
+  idea.linkedProjectName = p.name;
+  p.tasks = p.tasks || [];
+  p.tasks.push({ 
+    id: uid(), 
+    title: idea.title, 
+    due: '', 
+    priority: 'medium', 
+    done: false, 
+    createdAt: new Date().toISOString(),
+    fromIdea: ideaId
+  });
+  if (!state.meta.expanded) state.meta.expanded = [];
+  if (!state.meta.expanded.includes(projectId)) state.meta.expanded.push(projectId);
+  saveState(true); 
+  closeModal(); 
+  renderAll();
+  toast('🔗 ' + t('ideaLinked'));
+}
+
+function createProjectFromIdea(ideaId) {
+  const idea = state.ideas.find(x => x.id === ideaId);
+  if (!idea) return;
+  const newId = uid();
+  state.projects.push({ 
+    id: newId, 
+    name: idea.title, 
+    stage: 'idea', 
+    tasks: [{ 
+      id: uid(), 
+      title: idea.title, 
+      due: '', 
+      priority: 'medium', 
+      done: false, 
+      createdAt: new Date().toISOString(),
+      fromIdea: ideaId
+    }],
+    createdAt: new Date().toISOString() 
+  });
+  idea.status = 'current';
+  idea.linkedProjectId = newId;
+  idea.linkedProjectName = idea.title;
+  if (!state.meta.expanded) state.meta.expanded = [];
+  state.meta.expanded.push(newId);
+  saveState(true); 
+  closeModal(); 
+  renderAll();
+  toast('🏢 ' + t('projectCreated'));
+}
+
+function deleteIdea(id) {
+  state.ideas = state.ideas.filter(x => x.id !== id);
+  saveState(true); renderAll();
+}
+
+function openQuickNote() {
+  openModal(`
+    <div class="modal-title">${t('quickNote')}</div>
+    <textarea class="textarea" id="mQuickNote" placeholder="${t('note')}" style="min-height:120px;margin-bottom:10px;"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveQuickNote()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveQuickNote() {
+  const note = document.getElementById('mQuickNote').value.trim();
+  if (!note) return;
+  state.ideas.unshift({ id: uid(), title: note.slice(0, 60), note, status: 'quarantine', category: 'note', createdAt: new Date().toISOString() });
+  saveState(true); closeModal(); renderAll();
+  toast('📝 ' + t('saved'));
+}
+
+/* ==================== FINANCE ==================== */
+function renderFinance() {
+  const f = state.finance;
+  document.getElementById('goalAmount').value = f.amount || '';
+  document.getElementById('goalCurrent').value = f.current || '';
+  document.getElementById('goalDeadline').value = f.deadline || '';
+  document.getElementById('goalTitle').value = f.title || '';
+  const pct = f.amount > 0 ? Math.min(100, Math.round((f.current / f.amount) * 100)) : 0;
+  document.getElementById('financeProgressBar').style.width = pct + '%';
+  document.getElementById('financeGoalText').textContent = `${fmtNum(f.current)} / ${fmtNum(f.amount)} (${pct}%)`;
+  const list = document.getElementById('transactionsList');
+  if (!f.transactions.length) { list.innerHTML = `<div class="empty">${t('noTransactions')}</div>`; return; }
+  list.innerHTML = f.transactions.slice().reverse().map(tr => `
+    <div class="list-item">
+      <span class="badge badge-${tr.type === 'income' ? 'success' : 'danger'}">${t(tr.type)}</span>
+      <span class="item-title">${escapeHtml(tr.title)}</span>
+      <span class="item-meta">${fmtNum(tr.amount)}</span>
+      <span class="item-meta">${tr.date}</span>
+      <button class="btn btn-sm btn-ghost" onclick="deleteTransaction('${tr.id}')">🗑</button>
+    </div>
+  `).join('');
+}
+function saveFinanceGoal() {
+  state.finance.amount = Number(document.getElementById('goalAmount').value) || 0;
+  state.finance.current = Number(document.getElementById('goalCurrent').value) || 0;
+  state.finance.deadline = document.getElementById('goalDeadline').value;
+  state.finance.title = document.getElementById('goalTitle').value;
+  saveState(true); renderAll();
+  toast('💰 ' + t('saved'));
+}
+function openTransactionModal() {
+  openModal(`
+    <div class="modal-title">${t('transactions')}</div>
+    <input class="input" id="mTrTitle" placeholder="${t('title')}" style="margin-bottom:10px;">
+    <input class="input" id="mTrAmount" type="number" placeholder="${t('amount')}" style="margin-bottom:10px;">
+    <input class="input" id="mTrDate" type="date" value="${today()}" style="margin-bottom:10px;">
+    <select class="select" id="mTrType" style="margin-bottom:10px;">
+      <option value="income">${t('income')}</option>
+      <option value="expense">${t('expense')}</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveTransaction()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveTransaction() {
+  const title = document.getElementById('mTrTitle').value.trim();
+  const amount = Number(document.getElementById('mTrAmount').value) || 0;
+  if (!title || !amount) return;
+  const type = document.getElementById('mTrType').value;
+  const date = document.getElementById('mTrDate').value || today();
+  state.finance.transactions.push({ id: uid(), title, amount, type, date });
+  if (type === 'income') state.finance.current += amount;
+  else state.finance.current = Math.max(0, state.finance.current - amount);
+  saveState(true); closeModal(); renderAll();
+}
+function deleteTransaction(id) {
+  const tr = state.finance.transactions.find(x => x.id === id);
+  if (!tr) return;
+  if (tr.type === 'income') state.finance.current = Math.max(0, state.finance.current - tr.amount);
+  else state.finance.current += tr.amount;
+  state.finance.transactions = state.finance.transactions.filter(x => x.id !== id);
+  saveState(true); renderAll();
+}
+
+/* ==================== LEARNING ==================== */
+function renderLearning() {
+  const list = document.getElementById('learningList');
+  if (!state.learning.length) { list.innerHTML = `<div class="empty">${t('noLearning')}</div>`; return; }
+  list.innerHTML = state.learning.map(l => `
+    <div class="list-item" style="flex-direction:column;align-items:stretch;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="item-title">${escapeHtml(l.skill)}</span>
+        <span class="badge badge-accent">${l.progress || 0}%</span>
+        <button class="btn btn-sm btn-ghost" onclick="deleteLearning('${l.id}')">🗑</button>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${l.progress || 0}%"></div></div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="range" min="0" max="100" value="${l.progress || 0}" oninput="updateLearningProgress('${l.id}', this.value)" style="flex:1;">
+        <span style="font-size:12px;color:var(--text-2);">${escapeHtml(l.resource || '')}</span>
+      </div>
+    </div>
+  `).join('');
+}
+function openLearningModal() {
+  openModal(`
+    <div class="modal-title">${t('learningItems')}</div>
+    <input class="input" id="mLearnSkill" placeholder="${t('skill')}" style="margin-bottom:10px;">
+    <input class="input" id="mLearnResource" placeholder="${t('resource')}" style="margin-bottom:10px;">
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveLearning()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveLearning() {
+  const skill = document.getElementById('mLearnSkill').value.trim();
+  if (!skill) return;
+  state.learning.push({ id: uid(), skill, resource: document.getElementById('mLearnResource').value, progress: 0 });
+  saveState(true); closeModal(); renderAll();
+}
+function updateLearningProgress(id, val) {
+  const l = state.learning.find(x => x.id === id);
+  if (l) { l.progress = Number(val); saveState(true); renderLearning(); renderDashboard(); }
+}
+function deleteLearning(id) {
+  state.learning = state.learning.filter(x => x.id !== id);
+  saveState(true); renderAll();
+}
+
+/* ==================== HABITS ==================== */
+function renderHabits() {
+  const box = document.getElementById('habitsList');
+  if (!state.habits.length) { box.innerHTML = `<div class="empty">${t('noHabits')}</div>`; return; }
+  const days = ['ش','ی','د','س','چ','پ','ج'];
+  const enDays = ['S','M','T','W','T','F','S'];
+  const dayLabels = state.meta.lang === 'fa' ? days : enDays;
+  box.innerHTML = state.habits.map(h => {
+    const cells = Array.from({length:7}, (_,i) => {
+      const d = new Date(); d.setDate(d.getDate() - (6 - i));
+      const key = toLocalKey(d);
+      const done = (h.days || []).includes(key);
+      return `<div class="habit-day ${done ? 'done' : ''}" onclick="toggleHabitDay('${h.id}','${key}')" title="${key}">${dayLabels[i]}</div>`;
+    }).join('');
+    return `<div style="margin-bottom:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-size:13px;font-weight:600;">${escapeHtml(h.name)}</span>
+        <button class="btn btn-sm btn-ghost" onclick="deleteHabit('${h.id}')">🗑</button>
+      </div>
+      <div class="habit-grid">${cells}</div>
+    </div>`;
+  }).join('');
+}
+function openHabitModal() {
+  openModal(`
+    <div class="modal-title">${t('habits')}</div>
+    <input class="input" id="mHabitName" placeholder="${t('habitName')}" style="margin-bottom:10px;">
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveHabit()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveHabit() {
+  const name = document.getElementById('mHabitName').value.trim();
+  if (!name) return;
+  state.habits.push({ id: uid(), name, days: [] });
+  saveState(true); closeModal(); renderAll();
+}
+function toggleHabitDay(id, key) {
+  const h = state.habits.find(x => x.id === id);
+  if (!h) return;
+  h.days = h.days || [];
+  if (h.days.includes(key)) h.days = h.days.filter(d => d !== key);
+  else h.days.push(key);
+  saveState(true); renderHabits();
+}
+function deleteHabit(id) {
+  state.habits = state.habits.filter(x => x.id !== id);
+  saveState(true); renderAll();
+}
+
+/* ==================== REVIEW ==================== */
+const REVIEW_QUESTIONS_FA = [
+  'چه کاری این هفته خیلی خوب پیش رفت؟',
+  'کجاها گیر کردم و چرا؟',
+  'کدام ایده‌ها ارزش پیگیری دارن؟',
+  'هفته بعد اولویت اولم چیه؟',
+  'چه چیزی رو باید رها کنم؟'
+];
+const REVIEW_QUESTIONS_EN = [
+  'What went really well this week?',
+  'Where did I get stuck and why?',
+  'Which ideas are worth pursuing?',
+  'What is my top priority next week?',
+  'What should I let go of?'
+];
+function renderReviewChecklist() {
+  const box = document.getElementById('reviewChecklist');
+  const qs = state.meta.lang === 'fa' ? REVIEW_QUESTIONS_FA : REVIEW_QUESTIONS_EN;
+  box.innerHTML = qs.map((q, i) => `
+    <div class="list-item" style="flex-direction:column;align-items:stretch;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px;">${i+1}. ${q}</div>
+      <textarea class="textarea" data-review-q="${i}" style="min-height:50px;font-size:13px;"></textarea>
+    </div>
+  `).join('');
+}
+function generateReview() {
+  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
+  const doneTasks = getAllTasks().filter(tk => tk.done);
+  const pendingTasks = getAllTasks().filter(tk => !tk.done);
+  const newIdeas = state.ideas.filter(i => new Date(i.createdAt) >= weekAgo);
+  const f = state.finance;
+  const pct = f.amount > 0 ? Math.round((f.current / f.amount) * 100) : 0;
+  const answers = Array.from(document.querySelectorAll('[data-review-q]')).map(el => el.value);
+  state.reviews.push({
+    id: uid(), date: new Date().toISOString(), answers,
+    stats: { doneTasks: doneTasks.length, pendingTasks: pendingTasks.length, newIdeas: newIdeas.length, financePct: pct }
+  });
+  saveState(true);
+  document.getElementById('reviewBox').innerHTML = `
+    <div style="margin-bottom:16px;">
+      <div class="badge badge-accent">${new Date().toLocaleDateString(state.meta.lang === 'fa' ? 'fa-IR' : 'en-US')}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:16px;">
+      <div class="stat"><div class="stat-label">${t('weekDone')}</div><div class="stat-value">${doneTasks.length}</div></div>
+      <div class="stat"><div class="stat-label">${t('weekPending')}</div><div class="stat-value">${pendingTasks.length}</div></div>
+      <div class="stat"><div class="stat-label">${t('ideasCaptured')}</div><div class="stat-value">${newIdeas.length}</div></div>
+      <div class="stat"><div class="stat-label">${t('financeProgress')}</div><div class="stat-value">${pct}%</div></div>
+    </div>
+    <div style="font-size:13px;color:var(--text-2);line-height:1.8;">
+      ${answers.map((a,i) => a ? `<div style="margin-bottom:8px;"><strong style="color:var(--accent);">${i+1}.</strong> ${escapeHtml(a)}</div>` : '').join('')}
+    </div>
+  `;
+  toast('🔄 ' + t('saved'));
+}
+
+/* ==================== CALENDAR ==================== */
+let calCurrentDate = new Date();
+let calView = 'month';
+let calSelectedDay = null;
+
+const CAL_WEEKDAYS_FA = ['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه'];
+const CAL_WEEKDAYS_EN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function getMonthName(date) {
+  if (state.meta.lang === 'fa') {
+    try { return new Intl.DateTimeFormat('fa-IR', { month: 'long' }).format(date); }
+    catch(e) { return ''; }
+  }
+  return new Intl.DateTimeFormat('en-US', { month: 'long' }).format(date);
+}
+function getYear(date) {
+  if (state.meta.lang === 'fa') {
+    try { return new Intl.DateTimeFormat('fa-IR', { year: 'numeric' }).format(date); }
+    catch(e) { return date.getFullYear(); }
+  }
+  return date.getFullYear();
+}
+
+function renderCalendar() {
+  if (!document.getElementById('calGrid')) return;
+  document.getElementById('calTitle').textContent = `${getMonthName(calCurrentDate)} ${getYear(calCurrentDate)}`;
+  const dayBox = document.getElementById('calWeekdays');
+  const days = state.meta.lang === 'fa' ? CAL_WEEKDAYS_FA : CAL_WEEKDAYS_EN;
+  dayBox.innerHTML = days.map(d => `<div class="cal-weekday">${d}</div>`).join('');
+
+  const grid = document.getElementById('calGrid');
+  grid.className = 'cal-grid' + (calView === 'week' ? ' week-view' : '');
+  const year = calCurrentDate.getFullYear();
+  const month = calCurrentDate.getMonth();
+  let daysToRender = [];
+
+  if (calView === 'month') {
+    const firstDay = new Date(year, month, 1);
+    const startDay = firstDay.getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    for (let i = startDay - 1; i >= 0; i--) {
+      daysToRender.push({ date: new Date(year, month - 1, prevMonthDays - i), otherMonth: true });
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      daysToRender.push({ date: new Date(year, month, d), otherMonth: false });
+    }
+    while (daysToRender.length < 42) {
+      const last = daysToRender[daysToRender.length - 1].date;
+      const next = new Date(last); next.setDate(next.getDate() + 1);
+      daysToRender.push({ date: next, otherMonth: true });
+    }
+  } else {
+    const base = calSelectedDay ? new Date(calSelectedDay + 'T00:00:00') : new Date();
+    const startOfWeek = new Date(base);
+    startOfWeek.setDate(base.getDate() - base.getDay());
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(startOfWeek); d.setDate(startOfWeek.getDate() + i);
+      daysToRender.push({ date: d, otherMonth: false });
+    }
+  }
+
+  grid.innerHTML = daysToRender.map(({ date, otherMonth }) => {
+    const key = formatDateKey(date);
+    const isToday = key === today();
+    const isSelected = key === calSelectedDay;
+    const items = getItemsForDate(key);
+    const overdueCount = items.tasks.filter(tk => !tk.done && key < today()).length;
+    const visibleTasks = items.tasks.slice(0, 2).map(tk =>
+      `<div class="cal-item task-${tk.priority || 'medium'} ${tk.done ? 'task-done' : ''}" title="${escapeHtml(tk.title)}">✓ ${escapeHtml(tk.title)}</div>`
+    ).join('');
+    const visibleIdea = items.ideas.slice(0, 1).map(i =>
+      `<div class="cal-item idea" title="${escapeHtml(i.title)}">💡 ${escapeHtml(i.title)}</div>`
+    ).join('');
+    const visibleFinance = items.finance.slice(0, 1).map(f =>
+      `<div class="cal-item finance-${f.type}" title="${escapeHtml(f.title)}">${f.type === 'income' ? '+' : '−'} ${fmtNum(f.amount)}</div>`
+    ).join('');
+    const goalItem = items.goal ? `<div class="cal-item goal" title="${escapeHtml(items.goal)}">🎯 ${escapeHtml(items.goal)}</div>` : '';
+    const totalItems = items.tasks.length + items.ideas.length + items.finance.length + (items.goal ? 1 : 0);
+    const shownItems = items.tasks.slice(0,2).length + items.ideas.slice(0,1).length + items.finance.slice(0,1).length + (items.goal ? 1 : 0);
+    const remaining = totalItems - shownItems;
+    const classes = ['cal-day'];
+    if (otherMonth) classes.push('other-month');
+    if (isToday) classes.push('today');
+    if (isSelected) classes.push('selected');
+    if (overdueCount > 0) classes.push('has-overdue');
+
+    let dayNum;
+    if (state.meta.lang === 'fa') {
+      try { dayNum = new Intl.DateTimeFormat('fa-IR', { day: 'numeric' }).format(date); }
+      catch(e) { dayNum = date.getDate(); }
+    } else { dayNum = date.getDate(); }
+
+    return `
+      <div class="${classes.join(' ')}" onclick="selectCalDay('${key}')">
+        <div class="cal-day-num">
+          <span>${dayNum}</span>
+          ${totalItems > 0 ? `<span class="cal-day-count">${totalItems}</span>` : ''}
+        </div>
+        <div class="cal-day-items">
+          ${visibleTasks}${visibleIdea}${visibleFinance}${goalItem}
+          ${remaining > 0 ? `<div class="cal-more">+${remaining}</div>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  renderCalDayPanel();
+}
+
+function calPrev() {
+  if (calView === 'month') calCurrentDate.setMonth(calCurrentDate.getMonth() - 1);
+  else calCurrentDate.setDate(calCurrentDate.getDate() - 7);
+  renderCalendar();
+}
+function calNext() {
+  if (calView === 'month') calCurrentDate.setMonth(calCurrentDate.getMonth() + 1);
+  else calCurrentDate.setDate(calCurrentDate.getDate() + 7);
+  renderCalendar();
+}
+function calToday() {
+  calCurrentDate = new Date();
+  calSelectedDay = today();
+  renderCalendar();
+}
+function setCalView(view) {
+  calView = view;
+  document.querySelectorAll('.cal-view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  renderCalendar();
+}
+
+function getItemsForDate(dateKey) {
+  const tasks = [];
+  state.projects.forEach(p => {
+    (p.tasks || []).forEach(tk => {
+      if (tk.due === dateKey) tasks.push({ ...tk, projectId: p.id, projectName: p.name });
+    });
+  });
+  const ideas = state.ideas.filter(i => {
+    if (!i.createdAt) return false;
+    return toLocalKey(new Date(i.createdAt)) === dateKey;
+  });
+  const finance = (state.finance.transactions || []).filter(tr => tr.date === dateKey);
+  const goal = state.finance.deadline === dateKey ? (state.finance.title || 'هدف مالی') : null;
+  return { tasks, ideas, finance, goal };
+}
+
+function selectCalDay(dateKey) {
+  calSelectedDay = dateKey;
+  renderCalendar();
+}
+
+function renderCalDayPanel() {
+  const title = document.getElementById('calDayTitle');
+  const content = document.getElementById('calDayContent');
+  if (!calSelectedDay) {
+    title.textContent = t('selectDay');
+    content.className = 'empty';
+    content.textContent = t('selectDayHint');
+    return;
+  }
+  const dateObj = new Date(calSelectedDay + 'T00:00:00');
+  let displayDate;
+  try {
+    displayDate = new Intl.DateTimeFormat(state.meta.lang === 'fa' ? 'fa-IR' : 'en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' }).format(dateObj);
+  } catch(e) { displayDate = calSelectedDay; }
+  title.textContent = displayDate;
+
+  const items = getItemsForDate(calSelectedDay);
+  const parts = [];
+
+  if (items.tasks.length) {
+    parts.push(`
+      <div class="cal-day-section">
+        <div class="cal-day-section-title">${t('tasks')} (${items.tasks.length})</div>
+        <div class="list">
+          ${items.tasks.map(tk => `
+            <div class="list-item ${tk.done ? 'done' : ''}">
+              <div class="checkbox ${tk.done ? 'checked' : ''}" onclick="toggleTask('${tk.projectId}','${tk.id}')">✓</div>
+              <span class="item-title">${escapeHtml(tk.title)}</span>
+              <span class="badge badge-${tk.priority === 'high' ? 'danger' : tk.priority === 'low' ? 'success' : 'warning'}">${t(tk.priority)}</span>
+              ${!tk.done && calSelectedDay < today() ? `<span class="badge badge-danger">${t('overdue')}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  if (items.ideas.length) {
+    parts.push(`
+      <div class="cal-day-section">
+        <div class="cal-day-section-title">${t('dayIdeas')} (${items.ideas.length})</div>
+        <div class="list">
+          ${items.ideas.map(i => `
+            <div class="list-item">
+              <span class="badge badge-warning">${t(i.status)}</span>
+              <span class="item-title">${escapeHtml(i.title)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  if (items.finance.length) {
+    parts.push(`
+      <div class="cal-day-section">
+        <div class="cal-day-section-title">${t('dayFinance')} (${items.finance.length})</div>
+        <div class="list">
+          ${items.finance.map(tr => `
+            <div class="list-item">
+              <span class="badge badge-${tr.type === 'income' ? 'success' : 'danger'}">${t(tr.type)}</span>
+              <span class="item-title">${escapeHtml(tr.title)}</span>
+              <span class="item-meta">${fmtNum(tr.amount)}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `);
+  }
+
+  if (items.goal) {
+    parts.push(`
+      <div class="cal-day-section">
+        <div class="cal-day-section-title">${t('dayGoal')}</div>
+        <div class="list-item">
+          <span class="badge badge-accent">🎯</span>
+          <span class="item-title">${escapeHtml(items.goal)}</span>
+          <span class="item-meta">${fmtNum(state.finance.amount)}</span>
+        </div>
+      </div>
+    `);
+  }
+
+  if (!parts.length) {
+    content.className = 'empty';
+    content.textContent = t('noItemsThisDay');
+    return;
+  }
+  content.className = '';
+  content.innerHTML = parts.join('');
+}
+
+function addTaskToSelectedDay() {
+  if (!calSelectedDay) { toast('❌ ' + t('selectDay')); return; }
+  if (!state.projects.length) { toast('❌ ' + t('noProjects')); return; }
+  openModal(`
+    <div class="modal-title">${t('newTask')} — ${calSelectedDay}</div>
+    <input class="input" id="mCalTaskTitle" placeholder="${t('title')}" style="margin-bottom:10px;">
+    <select class="select" id="mCalTaskProject" style="margin-bottom:10px;">
+      ${state.projects.map(p => `<option value="${p.id}">${escapeHtml(p.name)}</option>`).join('')}
+    </select>
+    <select class="select" id="mCalTaskPriority" style="margin-bottom:10px;">
+      <option value="high">${t('high')}</option>
+      <option value="medium" selected>${t('medium')}</option>
+      <option value="low">${t('low')}</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveCalTask()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveCalTask() {
+  const title = document.getElementById('mCalTaskTitle').value.trim();
+  if (!title) return;
+  const pid = document.getElementById('mCalTaskProject').value;
+  const priority = document.getElementById('mCalTaskPriority').value;
+  const p = state.projects.find(x => x.id === pid);
+  if (!p) return;
+  p.tasks = p.tasks || [];
+  p.tasks.push({ id: uid(), title, due: calSelectedDay, priority, done: false, createdAt: new Date().toISOString() });
+  saveState(true); closeModal(); renderAll();
+  toast('✅ ' + t('saved'));
+}
+
+function addIdeaToSelectedDay() {
+  if (!calSelectedDay) { toast('❌ ' + t('selectDay')); return; }
+  openModal(`
+    <div class="modal-title">${t('newIdea')} — ${calSelectedDay}</div>
+    <input class="input" id="mCalIdeaTitle" placeholder="${t('title')}" style="margin-bottom:10px;">
+    <textarea class="textarea" id="mCalIdeaNote" placeholder="${t('note')}" style="margin-bottom:10px;"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">${t('cancel')}</button>
+      <button class="btn" onclick="saveCalIdea()">${t('save')}</button>
+    </div>
+  `);
+}
+function saveCalIdea() {
+  const title = document.getElementById('mCalIdeaTitle').value.trim();
+  if (!title) return;
+  // noon local → ISO (سر ساعت ۱۲ ظهر محلی، تا در هر تایم‌زونی که بخونیم همون روز بمونه)
+  const localNoon = new Date(calSelectedDay + 'T12:00:00');
+  state.ideas.unshift({
+    id: uid(), title,
+    note: document.getElementById('mCalIdeaNote').value,
+    status: 'quarantine', category: '',
+    createdAt: localNoon.toISOString()
+  });
+  saveState(true); closeModal(); renderAll();
+  toast('💡 ' + t('saved'));
+}
+
+document.getElementById('tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.tab');
+  if (!tab) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  document.getElementById('page-' + tab.dataset.page).classList.add('active');
+  if (tab.dataset.page === 'calendar') renderCalendar();
+});
+
+document.getElementById('langBtn').addEventListener('click', () => applyLang(state.meta.lang === 'fa' ? 'en' : 'fa'));
+document.getElementById('themeBtn').addEventListener('click', openThemeModal);
+document.getElementById('saveBtn').addEventListener('click', () => saveState());
+document.getElementById('exportBtn').addEventListener('click', exportJSON);
+document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change', e => {
+  if (e.target.files[0]) importJSON(e.target.files[0]);
+  e.target.value = '';
+});
+
+applyTheme(state.meta.theme);
+applyLang(state.meta.lang);
+calSelectedDay = today();
+renderAll();
+</script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+</body>
+</html>
